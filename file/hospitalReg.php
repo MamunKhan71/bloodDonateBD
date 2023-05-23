@@ -8,19 +8,22 @@ if(isset($_POST['hregister'])){
 	$hcity=$_POST['hcity'];
 	$check_email = mysqli_query($conn, "SELECT hemail FROM hospitals where hemail = '$hemail' ");
 	if(mysqli_num_rows($check_email) > 0){
-    $error= 'ইতোমধ্যেই রেজিস্ট্রেশন হয়েছে, দয়া করে লগিন করুন';
-    header( "location:../register.php?error=".$error );
-}else{
-	$sql = "INSERT INTO hospitals (hname, hemail, hpassword, hphone, hcity)
-	VALUES ('$hname','$hemail', '$hpassword', '$hphone', '$hcity')";
-	if ($conn->query($sql) === TRUE) {
-		$msg = 'রেজিস্ট্রেশন সফল হয়েছে, লগিন করুন';
-		header( "location:../login.php?msg=".$msg );
+		$error= 'ইতোমধ্যেই রেজিস্ট্রেশন হয়েছে, দয়া করে লগিন করুন';
+		header("Location: ../register.php?error=" . urlencode($error));
+		exit();
 	} else {
-		$error = "সমস্যা: " . $sql . "<br>" . $conn->error;
-        header( "location:../register.php?error=".$error );
+		$sql = "INSERT INTO hospitals (hname, hemail, hpassword, hphone, hcity)
+		VALUES ('$hname','$hemail', '$hpassword', '$hphone', '$hcity')";
+		if ($conn->query($sql) === TRUE) {
+			$msg = 'রেজিস্ট্রেশন সফল হয়েছে, লগিন করুন';
+			header("Location: ../login.php?msg=" . urlencode($msg));
+			exit();
+		} else {
+			$error = "সমস্যা: " . $sql . "<br>" . $conn->error;
+			header("Location: ../register.php?error=" . urlencode($error));
+			exit();
+		}
+		$conn->close();
 	}
-	$conn->close();
-}
 }
 ?>
