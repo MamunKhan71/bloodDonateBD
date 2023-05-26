@@ -22,7 +22,7 @@ We welcome contributions to the Bangladesh Blood Bank project. To contribute, pl
 
 ## License
 
-This project is licensed under the [insert license name]. Please refer to the [LICENSE](./LICENSE) file for more details.
+This project is licensed under the Apache 2.0 Liscense.
 
 ## Contact
 
