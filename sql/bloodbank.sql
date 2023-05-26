@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2022 at 06:49 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: May 26, 2023 at 06:47 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `blooddinfo` (
   `bdid` int(11) NOT NULL,
   `rid` int(11) NOT NULL,
   `bg` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `blooddinfo`
@@ -51,7 +51,8 @@ INSERT INTO `blooddinfo` (`bdid`, `rid`, `bg`) VALUES
 (20, 7, 'AB-'),
 (21, 7, 'A-'),
 (22, 7, 'O-'),
-(23, 1, 'A-');
+(23, 1, 'A-'),
+(27, 1, 'O+');
 
 -- --------------------------------------------------------
 
@@ -65,7 +66,7 @@ CREATE TABLE `blooddonate` (
   `hid` int(11) NOT NULL,
   `bg` varchar(11) NOT NULL,
   `status` varchar(100) NOT NULL DEFAULT 'Pending'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `blooddonate`
@@ -84,7 +85,7 @@ CREATE TABLE `bloodinfo` (
   `bid` int(11) NOT NULL,
   `hid` int(11) NOT NULL,
   `bg` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `bloodinfo`
@@ -109,7 +110,11 @@ INSERT INTO `bloodinfo` (`bid`, `hid`, `bg`) VALUES
 (27, 7, 'B+'),
 (31, 1, 'B-'),
 (32, 1, 'AB+'),
-(33, 1, 'B+');
+(33, 1, 'B+'),
+(34, 8, 'A+'),
+(35, 8, 'B+'),
+(36, 8, 'O+'),
+(37, 8, 'AB-');
 
 -- --------------------------------------------------------
 
@@ -123,7 +128,7 @@ CREATE TABLE `bloodrequest` (
   `rid` int(11) NOT NULL,
   `bg` varchar(11) NOT NULL,
   `status` varchar(100) NOT NULL DEFAULT 'Pending'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `bloodrequest`
@@ -145,18 +150,19 @@ CREATE TABLE `hospitals` (
   `hpassword` varchar(100) NOT NULL,
   `hphone` varchar(100) NOT NULL,
   `hcity` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `hospitals`
 --
 
 INSERT INTO `hospitals` (`id`, `hname`, `hemail`, `hpassword`, `hphone`, `hcity`) VALUES
-(1, 'Virus hospital', 'virus@gmail.com', 'virus', '9563804606', 'Delhi'),
-(4, 'Arunodhaya', 'arunodhaya@gmail.com', 'arunodhaya', '9898988909', 'Ballari'),
-(5, 'Columbia Asia', 'columbia@gmail.com', 'asia47', '080616156262', 'Bengaluru'),
-(6, 'Apollo Hospital', 'apollo@gmail.com', 'apollo247', '04428293333', 'Chennai'),
-(7, 'Sree Amaravathi Multispeciality Hospital', 'sreeamaravathihospitals@gmail.com', 'amaravathi', '09441432567', 'Amaravathi');
+(1, 'ড্যাফোডিল হাসপাতাল', 'diu@gmail.com', 'diu123', '9563804606', 'আশুলিয়া'),
+(4, 'এমজেড হাসপাতাল', 'mz365@gmail.com', 'mz123', '9898988909', 'চট্টগ্রাম'),
+(5, 'ইবনে সিনা ট্রাস্ট', 'ibne@gmail.com', 'ibne123', '080616156262', 'ঢাকা'),
+(6, 'ল্যাব-এইড হাসপাতাল', 'labaid@gmail.com', 'labaid123', '04428293333', 'মিরপুর ১০'),
+(7, 'পপুলার হাসপাতাল', 'popular@gmail.com', 'popular123', '09441432567', 'ধানমন্ডি'),
+(8, 'আহসানিয়া ক্যানসার হাঁসপাতাল', 'ahsania@cancer.com', 'ah123', '০১৮৪২২০০০০১', 'কামাড়পাড়া');
 
 -- --------------------------------------------------------
 
@@ -172,19 +178,19 @@ CREATE TABLE `receivers` (
   `rphone` varchar(100) NOT NULL,
   `rbg` varchar(10) NOT NULL,
   `rcity` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `receivers`
 --
 
 INSERT INTO `receivers` (`id`, `rname`, `remail`, `rpassword`, `rphone`, `rbg`, `rcity`) VALUES
-(1, 'test', 'test@gmail.com', 'test', '8875643456', 'A+', 'lucknow'),
-(4, 'Chandana', 'xyz@gmail.com', 'xyz@47', '9902477355', 'B+', 'Ballari'),
-(5, 'Rithish', 'abcd@gmail.com', 'rithish', '9380073433', 'B+', 'Tirupathi'),
-(6, 'Akshay', 'klmn@gmail.com', 'akshay74', '8106298053', 'B+', 'Hyderabad'),
-(7, 'Nandhini', 'nandhu@gmail.com', 'nandhu989', '9849492206', 'AB-', 'Bengaluru'),
-(8, 'Ritwika', 'hacku@hkp.com', '123456', '9563804740', 'AB+', 'Pune');
+(1, 'মোঃ মামুন', 'mamun@gmail.com', 'mamun123', '01643091606', 'A+', 'আশুলিয়া, সাভার, ঢাকা'),
+(4, 'লিমন', 'limon@gmail.com', 'limon123', '01643091607', 'B+', 'বিরুলিয়া'),
+(5, 'রাফি', 'rafi@gmail.com', 'rafi123', '01643091608', 'B+', 'ধানমন্ডি'),
+(6, 'রায়হান', 'raihan@gmail.com', 'raihan123', '01643091609', 'B+', 'মিরপুর'),
+(7, 'রাজন', 'rajon@gmail.com', 'rajon123', '01643091610', 'AB-', 'যাত্রাবাড়ি'),
+(8, 'জারিন', 'zarin@420.com', 'zarin123', '01643091611', 'O+', 'চট্টগ্রাম');
 
 --
 -- Indexes for dumped tables
@@ -238,7 +244,7 @@ ALTER TABLE `receivers`
 -- AUTO_INCREMENT for table `blooddinfo`
 --
 ALTER TABLE `blooddinfo`
-  MODIFY `bdid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `bdid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `blooddonate`
@@ -250,7 +256,7 @@ ALTER TABLE `blooddonate`
 -- AUTO_INCREMENT for table `bloodinfo`
 --
 ALTER TABLE `bloodinfo`
-  MODIFY `bid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `bid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `bloodrequest`
@@ -262,7 +268,7 @@ ALTER TABLE `bloodrequest`
 -- AUTO_INCREMENT for table `hospitals`
 --
 ALTER TABLE `hospitals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `receivers`
