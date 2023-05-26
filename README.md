@@ -19,6 +19,7 @@ We welcome contributions to the Bangladesh Blood Bank project. To contribute, pl
 3. Make your changes and commit them, with clear and concise commit messages.
 4. Push your changes to your forked repository.
 5. Create a pull request to submit your changes for review.
+6. Install the Li Ador Norrit Font Before Use to get the font working properly.
 
 ## License
 
