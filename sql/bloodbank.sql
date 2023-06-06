@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2023 at 06:47 PM
+-- Generation Time: Jun 06, 2023 at 05:53 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -135,7 +135,8 @@ CREATE TABLE `bloodrequest` (
 --
 
 INSERT INTO `bloodrequest` (`reqid`, `hid`, `rid`, `bg`, `status`) VALUES
-(7, 1, 6, 'O+', 'Accepted');
+(7, 1, 6, 'O+', 'Accepted'),
+(8, 1, 1, 'A-', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -262,7 +263,7 @@ ALTER TABLE `bloodinfo`
 -- AUTO_INCREMENT for table `bloodrequest`
 --
 ALTER TABLE `bloodrequest`
-  MODIFY `reqid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `reqid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `hospitals`
